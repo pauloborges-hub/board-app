@@ -1,4 +1,5 @@
 import { defineConfig } from "drizzle-kit";
+
 import { apiEnv } from "@/app/api-env";
 
 export default defineConfig({

@@ -1,6 +1,8 @@
 import "dotenv/config";
+
 import { faker } from "@faker-js/faker";
 import { sql } from "drizzle-orm";
+
 import { db } from "./index";
 import { comments, issues } from "./schema";
 

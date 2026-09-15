@@ -1,7 +1,8 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { apiReference } from "@scalar/hono-api-reference";
 import { cors } from "hono/cors";
-import { type AuthSession, auth } from "./auth";
+
+import { auth,type AuthSession } from "./auth";
 import { createComment } from "./routes/create-comment";
 import { createIssue } from "./routes/create-issue";
 import { deleteComment } from "./routes/delete-comment";

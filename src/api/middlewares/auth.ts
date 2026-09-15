@@ -1,4 +1,5 @@
 import { createMiddleware } from "hono/factory";
+
 import type { AuthSession } from "@/api/auth";
 
 export const requireAuth = createMiddleware<{
