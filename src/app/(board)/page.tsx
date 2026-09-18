@@ -4,7 +4,13 @@ import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { Section } from "@/components/section";
 
-export default function Home() {
+interface BoardProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function Board({ searchParams }: BoardProps) {
+  const { q } = await searchParams;
+
   return (
     <div className="max-w-[1620px] w-full mx-auto p-10 flex flex-col gap-8 h-dvh">
       <div></div>
