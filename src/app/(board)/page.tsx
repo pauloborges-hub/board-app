@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { Section } from "@/components/section";
+import { listIssues } from "@/http/list-issues";
 
 export const metadata: Metadata = {
   title: "Board",
@@ -15,6 +16,8 @@ interface BoardProps {
 
 export default async function Board({ searchParams }: BoardProps) {
   const { q } = await searchParams;
+
+  const issues = await listIssues();
 
   return (
     <div className="max-w-[1620px] w-full mx-auto p-10 flex flex-col gap-8 h-dvh">
@@ -28,28 +31,132 @@ export default async function Board({ searchParams }: BoardProps) {
               <ArchiveIcon className="size-3" />
               Backlog
             </Section.Title>
-            <Section.IssueCount>16</Section.IssueCount>
+            <Section.IssueCount>{issues.backlog.length}</Section.IssueCount>
           </Section.Header>
 
           {/* Content */}
           <Section.Content>
-            <Card.Root>
-              <Card.Header>
-                <Card.Number>ECO-001</Card.Number>
-                <Card.Title>Implementar cartão de crédito</Card.Title>
-              </Card.Header>
-              <Card.Footer>
-                <Button>
-                  <ThumbsUpIcon className="size-3" />
-                  <span className="text-sm">16</span>
-                </Button>
+            {issues.backlog.map((issue) => (
+              <Card.Root key={issue.id}>
+                <Card.Header>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
+                  <Card.Title>{issue.title}</Card.Title>
+                </Card.Header>
+                <Card.Footer>
+                  <Button>
+                    <ThumbsUpIcon className="size-3" />
+                    <span className="text-sm">12</span>
+                  </Button>
 
-                <Button>
-                  <MessageCircleIcon className="size-3" />
-                  <span className="text-sm">6</span>
-                </Button>
-              </Card.Footer>
-            </Card.Root>
+                  <Button>
+                    <MessageCircleIcon className="size-3" />
+                    <span className="text-sm">6</span>
+                  </Button>
+                </Card.Footer>
+              </Card.Root>
+            ))}
+          </Section.Content>
+        </Section.Root>
+
+        <Section.Root>
+          {/* Header */}
+          <Section.Header>
+            <Section.Title>
+              <ArchiveIcon className="size-3" />
+              To-do
+            </Section.Title>
+            <Section.IssueCount>{issues.todo.length}</Section.IssueCount>
+          </Section.Header>
+
+          {/* Content */}
+          <Section.Content>
+            {issues.todo.map((issue) => (
+              <Card.Root key={issue.id}>
+                <Card.Header>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
+                  <Card.Title>{issue.title}</Card.Title>
+                </Card.Header>
+                <Card.Footer>
+                  <Button>
+                    <ThumbsUpIcon className="size-3" />
+                    <span className="text-sm">12</span>
+                  </Button>
+
+                  <Button>
+                    <MessageCircleIcon className="size-3" />
+                    <span className="text-sm">6</span>
+                  </Button>
+                </Card.Footer>
+              </Card.Root>
+            ))}
+          </Section.Content>
+        </Section.Root>
+
+        <Section.Root>
+          {/* Header */}
+          <Section.Header>
+            <Section.Title>
+              <ArchiveIcon className="size-3" />
+              In progress
+            </Section.Title>
+            <Section.IssueCount>{issues.in_progress.length}</Section.IssueCount>
+          </Section.Header>
+
+          {/* Content */}
+          <Section.Content>
+            {issues.in_progress.map((issue) => (
+              <Card.Root key={issue.id}>
+                <Card.Header>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
+                  <Card.Title>{issue.title}</Card.Title>
+                </Card.Header>
+                <Card.Footer>
+                  <Button>
+                    <ThumbsUpIcon className="size-3" />
+                    <span className="text-sm">12</span>
+                  </Button>
+
+                  <Button>
+                    <MessageCircleIcon className="size-3" />
+                    <span className="text-sm">6</span>
+                  </Button>
+                </Card.Footer>
+              </Card.Root>
+            ))}
+          </Section.Content>
+        </Section.Root>
+
+        <Section.Root>
+          {/* Header */}
+          <Section.Header>
+            <Section.Title>
+              <ArchiveIcon className="size-3" />
+              Done
+            </Section.Title>
+            <Section.IssueCount>{issues.done.length}</Section.IssueCount>
+          </Section.Header>
+
+          {/* Content */}
+          <Section.Content>
+            {issues.done.map((issue) => (
+              <Card.Root key={issue.id}>
+                <Card.Header>
+                  <Card.Number>ISS-{issue.issueNumber}</Card.Number>
+                  <Card.Title>{issue.title}</Card.Title>
+                </Card.Header>
+                <Card.Footer>
+                  <Button>
+                    <ThumbsUpIcon className="size-3" />
+                    <span className="text-sm">12</span>
+                  </Button>
+
+                  <Button>
+                    <MessageCircleIcon className="size-3" />
+                    <span className="text-sm">6</span>
+                  </Button>
+                </Card.Footer>
+              </Card.Root>
+            ))}
           </Section.Content>
         </Section.Root>
       </main>
