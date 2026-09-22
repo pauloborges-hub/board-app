@@ -1,5 +1,6 @@
+import { UserButton } from "@/components/header/user-button";
+
 import { SearchInput } from "./search-input";
-import { UserButton } from "./user-button";
 
 export function Header() {
   return (
