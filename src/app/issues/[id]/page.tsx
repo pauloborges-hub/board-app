@@ -1,7 +1,8 @@
-import { Button } from "@/components/button";
-import { getIssue } from "@/http/get-issue";
 import { ArchiveIcon, MoveLeftIcon, ThumbsUpIcon } from "lucide-react";
 import Link from "next/link";
+
+import { Button } from "@/components/button";
+import { getIssue } from "@/http/get-issue";
 
 interface IssuePageProps {
   params: Promise<{ id: string }>;
