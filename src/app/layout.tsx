@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next";
 
+import { ReactQueryProvider } from "@/lib/react-query";
+
 export const metadata: Metadata = {
   title: {
     template: "%s | Product Roadmap",
@@ -18,7 +20,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={interFont.className}>
       <body className="bg-navy-950 text-navy-50 antialiased">
-        <NuqsAdapter>{children}</NuqsAdapter>
+        <ReactQueryProvider>
+          <NuqsAdapter>{children}</NuqsAdapter>
+        </ReactQueryProvider>
       </body>
     </html>
   );
