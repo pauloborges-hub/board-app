@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { Input } from "@/components/input";
-import { Skeleton } from "@/components/skeleton";
 import { getIssue } from "@/http/get-issue";
 
 import { IssueCommentsList } from "./issue-comments/issue-comments-list";
@@ -52,9 +51,7 @@ export default async function IssuePage({ params }: IssuePageProps) {
           {statusLabels[issue.status]}
         </span>
 
-        <Suspense fallback={<Skeleton className="h-7 w-16" />}>
-          <IssueLikeButton issueId={issue.id} />
-        </Suspense>
+        <IssueLikeButton issueId={issue.id} />
       </div>
 
       <div className="space-y-2">
