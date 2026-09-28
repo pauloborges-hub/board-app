@@ -3,9 +3,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { ArchiveIcon, MessageCircleIcon } from "lucide-react";
 import { useMemo } from "react";
-import z from "zod";
+import type z from "zod";
 
-import { IssuesListResponseSchema } from "@/api/routes/list-issues";
+import type { IssuesListResponseSchema } from "@/api/routes/list-issues";
 import { Button } from "@/components/button";
 import { Card } from "@/components/card";
 import { LikeButton } from "@/components/like-button";
