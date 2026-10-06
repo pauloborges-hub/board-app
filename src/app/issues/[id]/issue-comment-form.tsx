@@ -18,7 +18,7 @@ interface IssueCommentFormProps {
   isAuthenticated: boolean;
 }
 
-export function IssueCommentsForm({
+export function IssueCommentForm({
   onCreateComment,
   isAuthenticated,
 }: IssueCommentFormProps) {
@@ -33,6 +33,8 @@ export function IssueCommentsForm({
 
   async function handleCreateComment(data: CreateCommentSchema) {
     await onCreateComment(data.text);
+
+    reset();
   }
 
   return (
